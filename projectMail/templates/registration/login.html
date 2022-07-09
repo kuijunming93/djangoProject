@@ -1,0 +1,65 @@
+{% extends 'base.html'%}
+
+{% block base %}
+<div class="container"> <!-- TITLE AND BREADCRUMB -->
+    <div class="row mt-3">
+        <h1>Welcome to FoodMail</h1><hr>
+    </div>
+    <div class = "row mb-2">
+        <nav style="--bs-breadcrumb-divider: '>';" aria-label="breadcrumb">
+            <ol class="breadcrumb">
+            <li class="breadcrumb-item"><a href="{% url 'mainApp:home' %}" class="set-default">&nbsp;&nbsp;Home</a></li>
+            <li class="breadcrumb-item active" aria-current="page">Login</li>
+            </ol>
+        </nav>
+    </div>
+</div> <!-- END TITLE AND BREADCRUMB -->
+
+<div class="container">
+    {% if next %}
+        {% if user.is_authenticated %}
+        <h2>You do not have permission to view this page. </h2>
+        {% endif %}
+    {% endif %}
+
+    {% if user.is_authenticated %}
+        <div class="container mb-4">
+            <h2>You have already logged in.</h2>
+            <a href="{% url 'logout' %}">You may click here to logout</a>
+        </div>
+    {% else %}
+        <div class="container">
+            <figure class="d-none d-lg-block d-xl-block d-xxl-block"><!-- VIEW FOR LARGE SIZE AND ABOVE -->
+                <img src="https://kuijunming93.github.io/myWebpage/site/images/lunch-pic.jpg" style="max-width: 100%;"
+                class="card-img-top image-zoom image-blur" alt="...">
+            </figure>
+            <figure class="d-xs-block d-sm-block d-md-block d-lg-none d-xl-none d-xxl-none"><!-- VIEW FOR MEDIUM SIZE AND BELOW -->
+                <img src="https://i.ibb.co/5km9Z80/diner-bg-3.jpg" 
+                style="max-width: 100%; filter: blur(6.5px); -webkit-filter: blur(6.5px);"
+                class="card-img-top image-zoom image-blur" alt="...">
+            </figure>
+            <div class="wrapper text-image-overlay">
+                <div class='wrapper-title'>
+                    <h1>Hello There!</h1>
+                    <div class="mb-2"><span>Welcome back!<br> Login with your credentials below.</span></div>
+                </div>
+                <form method="post">
+                    {% csrf_token %}
+                    <label for="password" class="form-label">{{form.username.label_tag}}</label>
+                    {{form.username}}
+                    <label for="password" class="form-label">{{form.password.label_tag}}</label>
+                    {{form.password}}
+                {% if form.errors %}
+                <p style="color: #dc3545;">Invalid username and/or password.</p>
+                {% endif %}
+                <button type="submit" class="btn btn-danger mt-3">Sign in <i class="fa-solid fa-right-to-bracket"></i></button>
+                </form>
+                <div class="not-member">
+                    Not a member? <a href="{% url 'signup' %}">Register Now <i class="fa-solid fa-circle-info"></i></a>
+                </div>
+            </div>
+        </div>
+    {% endif %}
+</div>
+
+{% endblock %}

@@ -1,0 +1,46 @@
+{% extends 'base.html'%}
+
+{% block base %}
+<div class="container"> <!-- TITLE AND BREADCRUMB -->
+    <div class="row mt-5 mb-3">
+        <h1>Our {{context}}s</h1>
+    </div>
+    <div class = "row mt-2">
+        <nav style="--bs-breadcrumb-divider: '>';" aria-label="breadcrumb">
+            <ol class="breadcrumb">
+            <li class="breadcrumb-item"><a href="{% url 'mainApp:home' %}" class="set-default">&nbsp;&nbsp;Home</a></li>
+            <li class="breadcrumb-item"><a href="{% url 'mainApp:category' %}" class="set-default">Categories</a></li>
+            <li class="breadcrumb-item active" aria-current="page">{{context}}s</li>
+            </ol>
+        </nav>
+    </div><hr>
+</div> <!-- END TITLE AND BREADCRUMB -->
+
+<div class="container">
+    <div class="row d-flex justify-content-center">
+    {% for item in object_list %}
+        <div class="col col-sm-auto">
+            <div class="item-box">
+                <figure style="margin: 0;">
+                    <img src="{{item.imgPath}}" class="rounded card-img-top image-zoom" alt="...">
+                </figure>
+                <div class="item-box-content">
+                    <h3>{{item.name}}</h3>
+                    <h4>S${{item.price}}</h4>
+                    <p>{{item.description}}</p>
+                    <a href="/mainApp/menu/{{item.pk}}" style="text-decoration: none; padding: none;">
+                        <button type="button" class="btn btn-success update-cart styled-btn mb-2">
+                            View <i class="fa-solid fa-eye"></i></button>
+                    </a>
+                    <button data-product="{{item.id}}" data-action= "add" type="button" class="btn btn-warning update-cart styled-btn"
+                    style="width: 40%; margin-bottom: 10px;">
+                    Cart <i class="fa-solid fa-cart-plus"></i></button>
+                </div>
+            </div>
+        </div>
+    {% endfor %}
+    </div>
+</div>
+
+{% endblock %}
+

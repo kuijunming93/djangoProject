@@ -1,0 +1,38 @@
+{% extends 'base.html'%}
+
+{% block base %}
+    <div class="container"> <!-- TITLE AND BREADCRUMB -->
+        <div class="row mt-3">
+            <h1>Gallery</h1><hr>
+        </div>
+        <div class = "row mb-2">
+            <nav style="--bs-breadcrumb-divider: '>';" aria-label="breadcrumb">
+                <ol class="breadcrumb">
+                <li class="breadcrumb-item"><a href="{% url 'mainApp:home' %}" class="set-default">&nbsp;&nbsp;Home</a></li>
+                <li class="breadcrumb-item active" aria-current="page">Gallery</li>
+                </ol>
+            </nav>
+        </div>
+    </div> <!-- END TITLE AND BREADCRUMB -->
+    <div class="container">
+        <div class="row d-flex justify-content-center">
+            {% for item in category_list %}
+                <div class="col col-sm-auto">
+                    <a href="/mainApp/category/{{item.pk}}" class="set-default-dark">
+                    <div class="card" style="width: 22.5rem; height: auto; ">
+                        <figure style="margin: 0;">
+                            <img src="{{item.imgPath}}" class="card-img-top image-zoom" alt="...">
+                        </figure>
+                        <!-- style="height: 200px;width: 300px;" -->
+                        <div class="card-body">
+                        <h5 class="card-title">{{item.name}}</h5>
+                        <p class="card-text" style="font-weight: lighter; font-style: italic;">"{{item.description}}"</p>
+                        </div>
+                    </div>
+                    </a>
+                </div>
+            {% endfor %}
+        </div>
+    </div>
+{% endblock %}
+

@@ -1,0 +1,123 @@
+{% extends 'base.html'%}
+
+{% block base %}
+<div class="container"> <!-- TITLE AND BREADCRUMB -->
+    <div class="row mt-4">
+        <h1>{{contextName}}</h1>
+    </div>
+    <div class = "row mt-2">
+        <nav style="--bs-breadcrumb-divider: '>';" aria-label="breadcrumb">
+            <ol class="breadcrumb">
+            <li class="breadcrumb-item"><a href="{% url 'mainApp:home' %}" class="set-default">&nbsp;&nbsp;Home</a></li>
+            <li class="breadcrumb-item"><a href="{% url 'mainApp:menu' %}" class="set-default">&nbsp;&nbsp;Menu</a></li>
+            <li class="breadcrumb-item active" aria-current="page">{{contextName}}</li>
+            </ol>
+        </nav>
+    </div><hr>
+</div> <!-- END TITLE AND BREADCRUMB -->
+
+<!-- ITEM DETAIL VIEW -->
+{% for item in detail_list %}
+<h1></h1>
+<div class="container">
+    <div class="row mt-5 d-flex justify-content-center align-items-center">
+        <div class="col-6">
+            <figure class="menu-card-img">
+                <img src="{{item.imgPath}}" class="rounded image-zoom">
+                <h3><span class="badge text-bg-danger menu-card-badge">{{item.category}}</span></h3>
+            </figure>
+        </div>
+        <!-- styling for item detail view not complete -->
+        <div class="col-6">
+            <div class="card-body menu-card-body" style="padding-left: 0px;">
+                <h5 class="card-title">{{item.name}}</h5>
+                <h6 class="card-subtitle">S${{item.price}}</h6>
+                <p class="card-text mt-1">"{{item.description}}"</p>
+                <button data-product="{{item.id}}" data-action= "add" type="button" class="btn btn-success update-cart styled-btn"
+                    style="margin-bottom: 10px;">
+                    Cart <i class="fa-solid fa-cart-plus"></i></button>
+            </div>
+        </div>
+    </div>
+    {% endfor %}
+    <hr>
+    <!-- USER COMMENT AREA -->
+    <div class="row">
+        <div class="col">
+            <div class="card">
+                <div class="card-header">
+                    <h3>Customer Reviews</h3>
+                </div>
+                {% if comments_list %}
+                {% for comment in comments_list %}
+                <div class="card-body text-center">
+                  <h5 class="card-title">@{{comment.user}}</h5>
+                  <h5 class="card-subtitle" style="font-style: italic;">"{{comment.comment}}"</h5>
+                  {% for star in comment.rating %}
+                    {% if star %}
+                        <i class="fa-solid fa-star" style="color: orange;"></i>
+                    {% else %}
+                        <i class="fa-regular fa-star"></i>
+                    {% endif %}
+                  {% endfor %}
+                    
+                  <p class="card-text" style="font-style: italic;">{{comment.time}}</p>
+                </div>
+                {% endfor %}
+
+                {% else %}
+                <!-- show some text here, OPTIONAL -->
+                {% endif %}
+                {% if next_page %}
+                <div class="card-footer text-muted">
+                    <form method="GET" style="margin-bottom: 0px;">
+                        <input type="number" name="showAll" value="" hidden>
+                        <button type="submit" class="btn btn-light" style="width: 100%">Show more comments</button>
+                    </form>
+                </div>
+                {% endif %}
+            </div>
+            <div class="card">
+                <div class="card-footer text-muted">
+                    {% if user.is_authenticated %}
+                    <div class="mt-3">
+                        <h3>Would you like to leave a review?</h3>
+                        <div class="mt-3">
+                            <form method="POST">
+                                {% csrf_token %}
+                                <div class="d-flex justify-content-center">
+                                    <div class="star-widget">
+                                        <input type="radio" name="rating" value="5" id="rate-5" style="display:none;">
+                                        <label for="rate-5"><i class="fa-solid fa-star"></i></label>
+                                        <input type="radio" name="rating" value="4" id="rate-4" style="display:none;">
+                                        <label for="rate-4"><i class="fa-solid fa-star"></i></label>
+                                        <input type="radio" name="rating" value="3" id="rate-3" style="display:none;" checked="checked">
+                                        <label for="rate-3"><i class="fa-solid fa-star"></i></label>
+                                        <input type="radio" name="rating" value="2" id="rate-2" style="display:none;">
+                                        <label for="rate-2"><i class="fa-solid fa-star"></i></label>
+                                        <input type="radio" name="rating" value="1" id="rate-1" style="display:none;">
+                                        <label for="rate-1"><i class="fa-solid fa-star"></i></label>
+                                    </div>
+                                </div>
+                                <div class="form-floating mt-4">
+                                    <textarea class="form-control" name="userReview" placeholder="Leave a review here.." id="floatingTextarea"></textarea>
+                                    <label for="floatingTextarea">Leave a review here..</label>
+                                </div>
+                                <input type="number" name="id" value="{{contextId}}" hidden>
+                                <button type="submit" class="btn btn-success mt-3">Submit Review <i class="fa-solid fa-share"></i></button>
+                            </form>
+                        </div>
+                    </div>
+                    {% else %}
+                    <div>Please login to leave a review.</div>
+                    {% endif %}
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+
+
+{% endblock %}
+
