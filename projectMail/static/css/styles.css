@@ -587,6 +587,51 @@ input#rate-5:checked ~ label{
 .main-box:hover .main-box-content{
     left:0;
 }
+@media(min-width:720px) and (max-width:992px){
+    .main-box .main-box-content{
+        padding-top:2rem;
+        top: 40%;
+    }
+    .main-box .main-box-content h1{
+        font-size: 1.75rem;
+    }
+    .main-box .main-box-content h2{
+        font-size: 1.4rem;
+    }
+    .main-box .main-box-content p{
+        font-size: 1rem;
+    }
+}
+@media(max-width:720px){
+    .main-box .main-box-content{
+        padding-top:1.5rem;
+        top: 40%;
+    }
+    .main-box .main-box-content h1{
+        font-size: 1.4rem;
+    }
+    .main-box .main-box-content h2{
+        font-size: 1.2rem;
+    }
+    .main-box .main-box-content p{
+        font-size: 0.9rem;
+    }
+}
+@media(max-width:420px){
+    .main-box .main-box-content{
+        padding-top:1rem;
+        top: 30%;
+    }
+    .main-box .main-box-content h1{
+        font-size: 1.2rem;
+    }
+    .main-box .main-box-content h2{
+        font-size: 1rem;
+    }
+    .main-box .main-box-content p{
+        font-size: 0.8rem;
+    }
+}
 
 /* END MAIN PAGE ITEMS */
 

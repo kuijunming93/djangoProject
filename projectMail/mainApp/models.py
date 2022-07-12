@@ -24,6 +24,7 @@ class Category(models.Model):
     name = models.CharField(max_length=50)
     description = models.CharField(max_length=200,blank=True)
     imgPath = models.URLField(blank=True)
+    orderKey = models.IntegerField(blank=True, default=0)
 
     def __str__(self):
         return f'{self.name}'

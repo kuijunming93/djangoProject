@@ -24,6 +24,9 @@ class CategoryListView(ListView):
     model = Category
     fields = '__all__'
     context_object_name = 'category_list'
+    
+    def get_queryset(self):
+        return Category.objects.all().order_by('orderKey')
 
 class UserOrderListView(LoginRequiredMixin, ListView):
     model = UserOrder
