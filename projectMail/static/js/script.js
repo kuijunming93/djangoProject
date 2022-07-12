@@ -44,8 +44,8 @@ function init() {
 
 	// Parent cylinder
 	let cylinderMaterial = getMaterial('standard', 'rgb(255, 255, 255)');
-	cylinderMaterial.map = textureLoader.load('https://kuijunming93.github.io/myWebpage/site/images/webGL/textures/concrete.JPG');
-	cylinderMaterial.bumpMap = textureLoader.load('https://kuijunming93.github.io/myWebpage/site/images/webGL/textures/concrete.JPG');
+	cylinderMaterial.map = textureLoader.load('https://kuijunming93.github.io/myWebpage/site/images/webGL/textures/concrete.jpg');
+	cylinderMaterial.bumpMap = textureLoader.load('https://kuijunming93.github.io/myWebpage/site/images/webGL/textures/concrete.jpg');
 	cylinderMaterial.roughnessMap = textureLoader.load('./static/assets/textures/scratch.jpg');
 	cylinderMaterial.bumpScale = 0.02;
 	cylinderMaterial.metalness = 0.8;
@@ -60,8 +60,8 @@ function init() {
 	// Parent wall
 	let wallMaterial = getMaterial('standard', 'rgb(125, 125, 125)');
 	wallMaterial.map = textureLoader.load('./static/assets/textures/brick-texture-1.jpg');
-	wallMaterial.bumpMap = textureLoader.load('https://kuijunming93.github.io/myWebpage/site/images/webGL/textures/concrete.JPG');
-	wallMaterial.roughnessMap = textureLoader.load('https://kuijunming93.github.io/myWebpage/site/images/webGL/textures/concrete.JPG');
+	wallMaterial.bumpMap = textureLoader.load('https://kuijunming93.github.io/myWebpage/site/images/webGL/textures/concrete.jpg');
+	wallMaterial.roughnessMap = textureLoader.load('https://kuijunming93.github.io/myWebpage/site/images/webGL/textures/concrete.jpg');
 	wallMaterial.bumpScale = 0.1;
 	wallMaterial.metalness = 0.01;
 	wallMaterial.roughness = 2;
@@ -179,8 +179,8 @@ function init() {
 	// Plane object
 	let planeMaterial = getMaterial('standard', 'rgb(255, 255, 255)');
 	planeMaterial.map = textureLoader.load('./static/assets/textures/wood-texture-1.jpg');
-	// planeMaterial.bumpMap = textureLoader.load('https://kuijunming93.github.io/myWebpage/site/images/webGL/textures/concrete.JPG');
-	// planeMaterial.roughnessMap = textureLoader.load('https://kuijunming93.github.io/myWebpage/site/images/webGL/textures/concrete.JPG');
+	// planeMaterial.bumpMap = textureLoader.load('https://kuijunming93.github.io/myWebpage/site/images/webGL/textures/concrete.jpg');
+	// planeMaterial.roughnessMap = textureLoader.load('https://kuijunming93.github.io/myWebpage/site/images/webGL/textures/concrete.jpg');
 	// planeMaterial.bumpScale = 0.03;
 	planeMaterial.metalness = 0.05;
 	planeMaterial.roughness = 0.7;
