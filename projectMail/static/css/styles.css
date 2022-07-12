@@ -8,29 +8,6 @@ div.dg.a{
     overflow-x: visible;
 }
 
-@-webkit-keyframes bg-animation-old {
-    0% {background-position: right}
-    5% {background-position: left}
-    10% {background-position: right;
-        backdrop-filter: hue-rotate(30deg);}
-    30% {background-position: left;
-        backdrop-filter: hue-rotate(-30deg);}
-    40% {background-position: right;
-        backdrop-filter: hue-rotate(0deg);}
-    60% {background-position: left;
-        backdrop-filter: hue-rotate(60deg);}
-    70% {background-position: right;
-        backdrop-filter: hue-rotate(-60deg);}
-    85% {background-position: left;
-        backdrop-filter: hue-rotate(0deg);}
-    90% {background-position: right;
-        backdrop-filter: hue-rotate(90deg);}
-    95% {background-position: left;
-        backdrop-filter: hue-rotate(-90deg);}
-    100% {background-position: right;
-        backdrop-filter: hue-rotate(0deg);}
-}
-
 @-webkit-keyframes bg-animation {
     0% {background-position: right;}
     100% {background-position: left;}
@@ -102,6 +79,12 @@ html, body {
     width: 100%;
     height: 100%;
     display: block;
+    max-height: 600px;
+}
+@media(max-width:576px){
+    #webgl{
+        max-height: 300px;
+    }
 }
 
 /* ANIMATED STYLED BUTTON */
@@ -200,6 +183,7 @@ html, body {
         hsla(0, 0%, 100%, 0.6), hsla(0, 0%, 100%, 0) 50%,
         hsla(0, 0%, 0%, 0.3) 50%, hsla(0, 0%, 100%, 0.2)
     );
+    font-size: 1.25rem;
     font-family: sans-serif;
     font-weight: bold;
     color: white;
@@ -229,6 +213,18 @@ html, body {
 .glossy-button--gold { background-color: rgba(238, 155, 0, 0.863); }
 .glossy-button--green { background-color: #6C6; }
 .glossy-button--red { background-color: #E21; }
+@media(max-width:576px){
+    .glossy-button {
+        font-size: 0.9rem;
+        padding: 0.6rem 0.8rem;
+        border-radius: 20px;
+        margin: 7px;
+    }
+    .fixedbutton {
+        bottom: 12px !important;
+        right: 12px !important;
+    }
+}
 /* END GLOSSY BUTTON */
 
 /* ANIMATING SHOPPING CART BUTTON */
@@ -241,12 +237,6 @@ html, body {
 }
 
 @-webkit-keyframes animateSelect{
-    0%{filter: brightness(100%);  transform: scale(1.00);}
-    50%{filter: brightness(110%);  transform: scale(1.05);}
-    100%{filter: brightness(100%);  transform: scale(1.00);}
-}
-
-@-ms-keyframes animateSelect{
     0%{filter: brightness(100%);  transform: scale(1.00);}
     50%{filter: brightness(110%);  transform: scale(1.05);}
     100%{filter: brightness(100%);  transform: scale(1.00);}
@@ -292,6 +282,7 @@ img.image-zoom:hover{
     right: 10%;
     text-align: right;
 }
+/* END OFFCANVAS STLYING FOR SHOPPING CART */
 
 /* LOGIN/SIGN UP FORM FORMATTER */
 .wrapper{
@@ -636,10 +627,6 @@ input#rate-5:checked ~ label{
 /* END MAIN PAGE ITEMS */
 
 /* FOOTER */
-/* 
-    allow animation to auto move texts up and down
-    uses swiper js to do swiping
-*/
 .footer{
     background-color: rgba(30,30,30, 0.95);
     backdrop-filter: blur(10px);
