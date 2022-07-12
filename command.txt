@@ -8,6 +8,7 @@ python manage.py startapp <appname>
 // run server
 navigate into manage.py folder
 python manage.py runserver
+python manage.py runserver --insecure
 
 // package migration
 navigate into manage.py folder
