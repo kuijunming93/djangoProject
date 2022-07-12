@@ -8,7 +8,7 @@
     <div class = "row mb-2">
         <nav style="--bs-breadcrumb-divider: '>';" aria-label="breadcrumb">
             <ol class="breadcrumb">
-            <li class="breadcrumb-item"><a href="{% url 'mainApp:home' %}" class="set-default">&nbsp;&nbsp;Home</a></li>
+            <li class="breadcrumb-item"><a href="{% url 'baseView' %}" class="set-default">&nbsp;&nbsp;Home</a></li>
             <li class="breadcrumb-item"><a href="{% url 'login' %}" class="set-default">Login</a></li>
             <li class="breadcrumb-item active" aria-current="page">Signup</li>
             </ol>
@@ -22,12 +22,12 @@
         {% else %}
         <div class="container">
             <figure class="d-none d-lg-block d-xl-block d-xxl-block"><!-- VIEW FOR LARGE SIZE AND ABOVE -->
-                <img src="https://i.ibb.co/ftdwgSc/diner-bg.jpg" 
+                <img src="https://kuijunming93.github.io/myWebpage/site/images/extras/diner-bg.jpg" 
                 style="max-width: 100%; filter: blur(4.5px); -webkit-filter: blur(4.5px);"
                 class="card-img-top image-zoom image-blur" alt="...">
             </figure>
             <figure class="d-xs-block d-sm-block d-md-block d-lg-none d-xl-none d-xxl-none"><!-- VIEW FOR MEDIUM SIZE AND BELOW -->
-                <img src="https://i.ibb.co/kMmczKZ/diner-bg-2.jpg" 
+                <img src="https://kuijunming93.github.io/myWebpage/site/images/extras/diner-bg-2.jpg" 
                 style="max-width: 100%; filter: blur(6px); -webkit-filter: blur(6px);"
                 class="card-img-top image-zoom image-blur" alt="...">
             </figure>

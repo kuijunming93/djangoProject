@@ -1,9 +1,8 @@
-from unicodedata import category
 from django.http import JsonResponse
 from django.shortcuts import render
-from django.urls import reverse_lazy, reverse
+from django.urls import reverse_lazy
 from .models import Category, Menu, UserOrder, UserComments
-from django.views.generic import TemplateView, ListView, DetailView
+from django.views.generic import ListView
 from django.contrib.auth.decorators import login_required
 from django.contrib.auth.mixins import LoginRequiredMixin
 from django.core import serializers
@@ -11,9 +10,6 @@ from django.db.models import Q
 import json
 
 # Create your views here.
-
-class HomeView(TemplateView):
-    template_name = 'mainApp/home.html'
 
 class MenuListView(ListView):
     # menu_list.html

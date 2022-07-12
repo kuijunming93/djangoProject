@@ -8,15 +8,15 @@
     <div class = "row mb-2">
         <nav style="--bs-breadcrumb-divider: '>';" aria-label="breadcrumb">
             <ol class="breadcrumb">
-            <li class="breadcrumb-item"><a href="{% url 'mainApp:home' %}" class="set-default">&nbsp;&nbsp;Home</a></li>
+            <li class="breadcrumb-item"><a href="{% url 'baseView' %}" class="set-default">&nbsp;&nbsp;Home</a></li>
             <li class="breadcrumb-item active" aria-current="page">Order History</li>
             </ol>
         </nav>
     </div>
 </div> <!-- END TITLE AND BREADCRUMB -->
 {% if order_list %}
-    <div class="user-order-table">
-        <table class="table table-dark table-hover mb-0">
+    <div class="">
+        <table class="table table-dark table-hover mb-0 user-order-table">
             <!-- style table font size -->
             <thead>
             <tr>

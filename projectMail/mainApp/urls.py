@@ -1,11 +1,10 @@
 from django.urls import path
 
-from .views import HomeView, MenuListView, menu_detail_view, CategoryListView, UserOrderListView, update_order, retrieve_menu, category_detail_view
+from .views import MenuListView, menu_detail_view, CategoryListView, UserOrderListView, update_order, retrieve_menu, category_detail_view
 
 app_name = 'mainApp'
 
 urlpatterns = [
-    path('', HomeView.as_view(), name='home'),
     path('menu/', MenuListView.as_view(), name='menu'),
     path('menu/<int:pk>', menu_detail_view, name='menu_detail'),
     path('category/', CategoryListView.as_view(), name='category'),
