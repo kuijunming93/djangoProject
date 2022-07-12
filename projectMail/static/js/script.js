@@ -11,7 +11,6 @@ function init() {
 	scene.name = 'scene';
 	// let datGUI = new dat.GUI();
 	let clock = new THREE.Clock();
-	// RectAreaLightUniformsLib.init();
 
 	let camera = new THREE.PerspectiveCamera(
 		40,
@@ -120,11 +119,7 @@ function init() {
 
 	// NEON LIGHT OBJECT
 	loader.load('./static/assets/open-sign-model/Open Sign.obj', function (object) {
-		let modelMaterial = getMaterial('standard', NEON_RGB);
-		let objectLightSource = getPointLight(NEON_INTENSITY, NEON_RGB);
-		objectLightSource.decay = 2;
-		objectLightSource.power = 0.3;
-		objectLightSource.name = 'neon-light';
+		let modelMaterial = getMaterial('phong', NEON_RGB);
 		object.traverse(function(child) {
 			child.material = modelMaterial;
 			if ( child.isMesh ) {
@@ -139,19 +134,18 @@ function init() {
 		object.scale.x = 0.008;
 		object.scale.y = 0.008;
 		object.scale.z = 0.008;
-		object.add(objectLightSource);
 		wall.add(object);
 	});
 
 	// PLANT OBJECT
 	loader.load('./static/assets/pot-plant-model/Aloe_plant_SF.obj', function (object) {
 		let colorMap = textureLoader.load('./static/assets/pot-plant-model/Aloe_plant.jpg');
-		let modelMaterial = getMaterial('standard', 'rgb(211, 211, 211)');
+		let modelMaterial = getMaterial('lambert', 'rgb(211, 211, 211)');
 		object.traverse(function(child) {
 			child.material = modelMaterial;
 			modelMaterial.map = colorMap;
-			modelMaterial.bumpMap = textureLoader.load('./static/assets/pot-plant-model/Aloe_plant_occlusion.jpg');
-			modelMaterial.roughnessMap = textureLoader.load('./static/assets/pot-plant-model/Aloe_plant_normal.jpg');
+			// modelMaterial.bumpMap = textureLoader.load('./static/assets/pot-plant-model/Aloe_plant_occlusion.jpg');
+			// modelMaterial.roughnessMap = textureLoader.load('./static/assets/pot-plant-model/Aloe_plant_normal.jpg');
 			modelMaterial.roughness = 1.6;
 			modelMaterial.bumpScale = 0.08;
 			if ( child.isMesh ) {
@@ -186,7 +180,7 @@ function init() {
 	planeMaterial.roughness = 0.7;
 	// planeMaterial.envMap = reflectionCube;
 	
-	let plane = getPlane(planeMaterial, 80);
+	let plane = getPlane(planeMaterial, 60);
 	plane.rotation.x = Math.PI/2;
 	plane.castShadow = false;
 	plane.receiveShadow = true;
@@ -201,14 +195,13 @@ function init() {
 			let texture = wrapMaterialList[i][mapName];
 			texture.wrapS = THREE.RepeatWrapping;
 			texture.wrapT = THREE.RepeatWrapping;
-			texture.repeat.set(3, 3);
+			texture.repeat.set(2, 2);
 		});
 	}
 
 	scene.add(plane, cylinderBase, wall);
 
 	// LIGHT SOURCE CREATION
-	// const ambientLight = new THREE.AmbientLight( 0x404040 );
 	let light = getPointLight(1.1, null);
 	light.castShadow = true;
 	light.shadow.mapSize.width = 1024; // default
@@ -217,16 +210,14 @@ function init() {
 	light.position.x = 4;
 	light.position.y = 5;
 	light.position.z = 8;
-	
-	// datGUI.add(light, 'intensity', 0, 10);
-	// datGUI.add(light.position, 'y', 0, 15);
-	// datGUI.add(light.position, 'x', -10, 10);
-	// datGUI.add(light.position, 'z', -10, 10);
 
 	// SECONDARY OBJECT NEON LIGHT SOURCE	
 	let objectLightSourceWall = getPointLight(NEON_INTENSITY, NEON_RGB);
 	objectLightSourceWall.decay = 2;
 	objectLightSourceWall.power = 0.3;
+	objectLightSourceWall.position.y = 3;
+	objectLightSourceWall.position.x = 0.5;
+	objectLightSourceWall.position.z = -4;
 	objectLightSourceWall.name = 'neon-light-onWall';
 	
 	scene.add(light, objectLightSourceWall);
@@ -338,23 +329,7 @@ function update(renderer, scene, camera, controls, clock) {
 	baseCylinder.rotation.y = timeElapsed * 1.5 * 0.1;
 
 	// GENERAL NEON LIGHT
-	let neonLight = (scene.getObjectByName('wall')).getObjectByName('neon-light');
-	if (neonLight){
-		neonLight.intensity += NEON_RATEOFCHANGE;
-		if (neonLight.intensity >= NEON_UPPERLIMIT){
-			neonLight.name = 'neon-light-decrease';
-		}
-	} else {
-		neonLight = (scene.getObjectByName('wall')).getObjectByName('neon-light-decrease');
-		if (neonLight){
-			neonLight.intensity -= NEON_RATEOFCHANGE;
-			if (neonLight.intensity <= NEON_LOWERLIMIT){
-				neonLight.name = 'neon-light';
-			}
-		}
-	}
-	// NEON LIGHT ON WALL
-	neonLight = scene.getObjectByName('neon-light-onWall');
+	let neonLight = scene.getObjectByName('neon-light-onWall');
 	if (neonLight){
 		neonLight.intensity += NEON_RATEOFCHANGE;
 		if (neonLight.intensity >= NEON_UPPERLIMIT){
