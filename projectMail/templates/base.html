@@ -83,13 +83,12 @@
       <h1 class="mt-2"> WELCOME TO FOODMAIL </h1>
 
       <script src="{% static './lib/three.js' %}"></script>
-      <script src="{% static './lib/RectAreaLightUniformsLib.js' %}"></script>
       <script src="{% static './lib/dat.gui.min.js' %}"></script>
       <script src="{% static './lib/OrbitControls.js' %}"></script>
       <script src="{% static './lib/OBJLoader.js' %}"></script>
-      <script src="{% static './lib/FBXLoader.js' %}"></script>
+      <script src="{% static './lib/GLTFLoader.js' %}"></script>
       <canvas id ="webgl" class="mb-2"></canvas>
-      <p style="font-weight: lighter; font-style: italic;">Experience Our Interative 3D Model</p>
+      <p style="font-weight: lighter; font-style: italic;"> Interative 3D Experience <i class="fa-brands fa-unity"></i></p>
       <script type="text/javascript">
         showFooter = true;
       </script>
@@ -236,7 +235,7 @@
       } else {
         console.log("Footer hidden");
         let footer = document.getElementById('footer-id');
-        footer.classList.add('d-none');
+        if (!footer.classList.contains('d-none')) footer.classList.add('d-none');
       } 
     </script>
   </body>

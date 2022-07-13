@@ -39,6 +39,7 @@ function init() {
 
 	// OBJECT CREATION AND INSERTION
 	let loader = new THREE.OBJLoader();
+	// let gltfLoader = new THREE.GLTFLoader();
 	let textureLoader = new THREE.TextureLoader();
 
 	// Parent cylinder
@@ -74,6 +75,7 @@ function init() {
 	wall.receiveShadow = true;
 	
 	// Object loaders
+	// gltfLoader.load('./static/assets/burger-model-gltf/scene.gltf', function (object) {
 	loader.load('./static/assets/burger-model/Scaniverse.obj', function (object) {
 		let colorMap = textureLoader.load('./static/assets/burger-model/Scaniverse.jpg');
 		let modelMaterial = getMaterial('standard', 'rgb(255, 255, 255)');
@@ -118,6 +120,7 @@ function init() {
 	});
 
 	// NEON LIGHT OBJECT
+	// gltfLoader.load('./static/assets/open-sign-model/OpenSign.gltf', function (object) {
 	loader.load('./static/assets/open-sign-model/Open Sign.obj', function (object) {
 		let modelMaterial = getMaterial('phong', NEON_RGB);
 		object.traverse(function(child) {
@@ -144,8 +147,6 @@ function init() {
 		object.traverse(function(child) {
 			child.material = modelMaterial;
 			modelMaterial.map = colorMap;
-			// modelMaterial.bumpMap = textureLoader.load('./static/assets/pot-plant-model/Aloe_plant_occlusion.jpg');
-			// modelMaterial.roughnessMap = textureLoader.load('./static/assets/pot-plant-model/Aloe_plant_normal.jpg');
 			modelMaterial.roughness = 1.6;
 			modelMaterial.bumpScale = 0.08;
 			if ( child.isMesh ) {
