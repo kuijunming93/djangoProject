@@ -32,11 +32,13 @@ body.bg-style nav{
 div.blur-window{
     color: white;
     background-color: rgba(50,50,50, 0.6);
+    -webkit-backdrop-filter: blur(10px);
     backdrop-filter: blur(10px);
 }
 
 div.blur-window-dark{
     background-color: rgba(0,0,0, 0.6);
+    -webkit-backdrop-filter: blur(10px);
     backdrop-filter: blur(10px);
     color: white;
 }
@@ -147,6 +149,7 @@ html, body {
     height: 100%;
     width: 100%;
     background:rgba(255,255,255,.6);
+    -webkit-backdrop-filter: blur(6px);
     backdrop-filter: blur(6px);
     padding-top:3rem;
     text-align: center;
@@ -562,6 +565,7 @@ input#rate-5:checked ~ label{
     width: 100%;
     background:rgba(0,0,0,.6);
     backdrop-filter: blur(6px);
+    -webkit-backdrop-filter: blur(6px);
     padding-top:3rem;
     text-align: center;
     align-items: center;
@@ -629,6 +633,7 @@ input#rate-5:checked ~ label{
 /* FOOTER */
 .footer{
     background-color: rgba(30,30,30, 0.95);
+    -webkit-backdrop-filter: blur(10px);
     backdrop-filter: blur(10px);
     color: white;
     text-align: center;
@@ -652,6 +657,7 @@ input#rate-5:checked ~ label{
     height: 100%;
     width: 100%;
     background:rgba(0,0,0,.6);
+    -webkit-backdrop-filter: blur(6px);
     backdrop-filter: blur(6px);
     text-align: center;
     align-items: center;
