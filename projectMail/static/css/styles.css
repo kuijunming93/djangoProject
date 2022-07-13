@@ -20,7 +20,6 @@ body{
 body.bg-style {
     -webkit-animation: bg-animation 30s infinite alternate;
     background-image: url('https://kuijunming93.github.io/myWebpage/site/images/extras/bg-wall-1x.jpg');
-    /* background-size: 300%; */
 }
 
 body.bg-style nav{
@@ -631,6 +630,12 @@ input#rate-5:checked ~ label{
 /* END MAIN PAGE ITEMS */
 
 /* FOOTER */
+@media(min-width:1260px){
+    figure.footer-resize{
+        margin-top: 6rem !important;
+        margin-bottom: 6rem !important;
+    }
+}
 .footer{
     background-color: rgba(30,30,30, 0.95);
     -webkit-backdrop-filter: blur(10px);
