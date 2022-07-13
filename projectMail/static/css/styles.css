@@ -684,3 +684,14 @@ div.scroll {
     text-align:justify;
 }
 /* END FOOTER */
+
+@media(max-width:420px){
+    div.blur-window{
+        -webkit-backdrop-filter: blur(5px);
+        backdrop-filter: blur(5px);
+    }
+    div.blur-window-dark{
+        -webkit-backdrop-filter: blur(5px);
+        backdrop-filter: blur(5px);
+    }
+}
