@@ -18,8 +18,8 @@ body{
 }
 
 body.bg-style {
-    /* -webkit-animation: bg-animation 30s infinite alternate; */
-    /* background-image: url('https://i.ibb.co/ScTXW8L/my-visual-59143904.png'); */
+    -webkit-animation: bg-animation 30s infinite alternate;
+    background-image: url('https://kuijunming93.github.io/myWebpage/site/images/extras/bg-wall-1x.jpg');
     /* background-size: 300%; */
 }
 
